@@ -1,0 +1,324 @@
+====== Hacking the Wink ======  
+
+The Wink is a fairly inexpensive home automation controller, that's been around for a few years now, but it comes with a pretty impressive array of technologies. It can be purchased from several online-retailers, or even at your local [[http://www.homedepot.com/p/Wink-Smart-Home-HUB-PWHUB-WH18/206582561|Home Depot]]. 
+
+It supports; 
+  * Bluetooth 
+  * Z-Wave® 
+  * ZigBee® 
+  * Wi-Fi® 
+  * Lutron® 
+  * Clear Connect®
+
+----
+
+By default, the manufacturer want you to connect the wink with their mobile app, and allows you to add a slew of various home automation products, all controllable via the app, if you're home, or away. They do this by ensuring the wink is connected to the internet, and their servers. Here in lies the problem. What if their servers go down, or what if my internet goes down (which happens more times than I'd like to admit). Well, when this happens, it means that you can no longer control my lights or appliances! No thank you!
+
+By hacking the wink, it will allow you to not only have local/remote access via their app, but it will also allow you to have local access in case your internet goes out (or their servers cease to exist). Other home automation technologies such as Insteon or x10 don't rely on your internet connection to work.. they just work, locally, as they should.
+
+This is in no means an extensive guide in "how to hack the wink" but instead a few general steps, with links to external resources, and some of my findings, as well as some steps not documented anywhere else. Hopefully this will help someone who struggled with their wink as much as I have. 
+
+----
+So you went to HomeDepot and bought your shiny new Wink. The first thing that everyone wants to do is, take it home, plug it in, set it up and see what this thing can do! Here in lies the problem. Once you connect your wink with your mobile phone and start configuring it, it will connect to the wink servers and update it's software to the latest version! This is bad, because it patches all the known security vulnerabilities that have enabled people to hack their wink. Unfortunately, at the time of this writing all known security vulnerabilities have already been patched, and applied to your shiny new wink, so most of the methods listed on the interwebs will not work, but you're welcome to try, if you're a fan of banging your head against the keyboard! 
+
+The one, and only method that still works, regardless of firmware version is the NAND Glitch Method! 
+
+===== Rooting the Wink =====
+I assume, if you've gotten this far you have some basic experience with VI, if not, look [[http://lmgtfy.com/?q=basic+vi+commands|here]].
+  - Bring your wink home, unpack it but do NOT plug it in. 
+  - Follow the steps listed [[https://mattcarrier.com/post/hacking-the-winkhub-part-1/|here]], then return when you're done with part 1. 
+    - At the end of part one, you should have your new wink taken apart, and be logged in via terminal emulator (minicom or the like). 
+  - At this point you should be at a root prompt, that looks something like this: /#
+  - Edit your inittab to enable the serial console on boot
+    - <code:bash linenums:1>vi /etc/inittab</code>
+    - Remove the # in front of this line<code:bash linenums:1>ttyAM0::respawn:/sbin/getty -L  ttyAM0 115200 vt100 # GENERIC_SERIAL</code>
+    - Save and quit the file
+  - Run passwd to set a new root password on the wink, you should have to enter your new password twice, and be returned to the prompt. 
+  - Enable SSH
+    - Run the following command in the shell: <code:bash linenums:1> touch /database/ENABLE_SSH && /database_default/ENABLE_SSH </code>
+  - Edit the Dropbear SSH config:
+    - Check to see if a dropbear config file exists: <code:bash linenums:1> ls -l /etc/default/dropbear </code>
+      - if so, edit it with vi: <code:bash linenums:1> vi /etc/default/dropbear </code>
+      - Find the line: <code:bash linenums:1> DROPBEAR_ARGS=-sg </code> and change it to <code:bash linenums:1> DROPBEAR_ARGS= </code>
+      - Save and quit the file
+  - Start SSHD: <code:bash linenums:1> /etc/init.d/S50dropbear start </code>
+  - Disable automatic updates
+    - Edit the /etc/hosts file:
+      - <code:bash linenums:1> vi /etc/hosts </code>
+      - Add the following lines to the end of the file __leaving the lines that are there intact__. 
+        - <code:bash linenums:1>127.0.0.1        hub-api.winkapp.com
+127.0.0.1        hub-updates.winkapp.com
+127.0.0.1        wink-hub-images.s3.amazonaws.com</code>
+    - Save and quit the file.
+  - Optionally enable the monit web gui, monit comes pre-installed on the wink. I use monit on all of my systems, more info can be found [[monit_configs|here]].
+    - Edit the monit config file
+      - <code:bash linenums:1> vi /etc/monitrc </code>
+      - After the line that reads "set daemon 15" add the following text:
+        - <code:bash linenums:1>set httpd port 2812 and
+    allow admin:password
+    allow 192.168.1.0/24</code>
+          - In the above code block, you'll need to replace the word //password//, with a password of your choosing. You'll also want to change the address to match your home's network subnet. 
+          - Since I've already done this on my wink, I'm not sure what the default values are here, but replacing the httpd code block with the one above will work just fine. 
+    - Save and quit the file.
+  - Add your SSH Keys
+    - On another system that you plan to use with the wink (perhaps openhab), you'll need to create a pair of ssh keys. This will be useful to execute commands remotely, without having to manually ssh into the wink every time, and thus can be scripted.
+      - Login to your remote machine using putty, or iterm and switch user to root (or any user that you want to be able to execute commands on the wink, remotely). In this example I'm going to use the user "openhab" and the host "bar". 
+      - Once logged in, we're going to create an ssh key pair, one private, and one public. 
+        - Generate a new key:
+          - <code:bash linenums:1> ssh-keygen </code>
+          - Press enter when prompted, for all the prompts (we don't want a password for this key). 
+          - When you're finished, and back at the shell, you should have 2 new files:
+          - <code:bash linenums:1> /home/openhab/.ssh/id_rsa /home/openhab/.ssh/id_rsa.pub </code>
+        - Open the pub (or public) key file with cat:
+          - <code:bash linenums:1> cat /home/openhab/.ssh/id_rsa.pub </code>
+        - It will display the contents of the file to your screen, and look something like this:
+          - <code:bash linenums:1>ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCusSWO/9kA5XaySVeYHKJcZIa8bIkLlZAQM55w0prM262dkcMb4j3VRAGleqqSZ5/7SRw1iaJNDbAdaOyIKNOHsgGhrNNtq+kGsWom6eeHgsLW0p0feve1AlhMJeFfPLEVormouGFKvF0rTTvL6bmBj6bzfDlvESxyOqZdSGPf7Atxxf2lqtqip+7K+nmowNIpPs2ZOCUu5HQ3nC+B2lEhn7OHq5b2DENmkEAU3+i26VloLxcB/FmTbetMXYwhDQ0nXEvD3tU/EJP8OxgJynl/P9gleD0nXvKDfKqpDP0UCW/w8NLg9RqilQ58zdw0Ew+GB771ZokXEm8pkyBF4XBc4T openhab@bar</code>
+          - Copy all of this text to your clipboard. 
+      - With your new ssh key copied to your clipboard, go back to the window where you're logged into your wink. 
+      - Edit the file authorized_keys file
+        - <code:bash linenums:1> vi /database/authorized_keys </code>
+        - Paste the new key, from your clipboard into the file, ensuring it all appears on one line. 
+      - Save and quit the file. 
+  - Sync the changes you've made to disk with the following command
+    - <code:bash linenums:1>sync</code>
+  - Finally reboot the wink, with the reboot command
+    - <code:bash linenums:1>reboot</code>
+  - Put your wink back together, disconnecting all cables from the previous steps, and power it up. 
+
+
+===== Configuring the Wink =====
+At this point, if you're still with me, you now have a brand new rooted wink! Now we can configure it, so you can actually use it.
+  - If you haven't done so already, plug your new wink in. After a minute or two you should have a flashing purple light. This is normal, and just means that your wink is unconfigured 
+  - Using your mobile phone, download and install the wink app 
+  - Launch it, create an account, and follow the on-screen steps. Remember, your wink is rooted, but the app doesn't know (or care) that it's rooted. So the app, and wink will perform normally. 
+    - If at any point in time, you are ever prompted, **DO NOT UPDATE** your wink. This will reverse all the changes made above. 
+  - Once your wink is connected to your home network, and accessible via the wink app on your phone you should be able to add devices to it, like normal. 
+
+
+===== Monitoring the Wink with Monit =====
+If you've followed the guide above, and optionally enabled monit, here's how to use it. 
+  - Find the IP address of your wink, on the network.
+    - Using a network scanner like Fing you'll be able to find all the used IP addresses in use on your network.
+    - Or you could login to your wireless router, and look at the dhcp lease table. 
+  - Open your web browser, and point it to:
+    - <code:bash linenums:1>http://<wink IP>:2812</code>
+    - When prompted, enter the username and password you set above. 
+  - When you're logged in, you should be presented with a page that looks something like this, I'd suggest not stopping or restarting any services, unless you know what you're doing: 
+{{::wink-monit.png?direct&100|}} 
+
+===== Controlling the Wink with OpenHAB =====
+If you're still with me, and you've chosen to run OpenHAB here's how to get the wink to play nice. 
+  - First, let's assume a few things, for documentation sake, you'll have the change the info below to match your environment. 
+    - OpenHAB server: 192.168.1.1
+    - User running OpenHAB: openhab
+    - Wink IP address: 192.168.1.2
+    - I also assume you've already setup the SSH keys as above. 
+    - And have a device connected to the wink, that you can control via the app (I'm using a fan)
+    - You've created a scripts folder which will contain various OpenHAB shell scripts; I use "/etc/openhab/scripts"
+
+  - Login to your OpenHAB server, and switch user to the openhab user
+    - <code:bash linenums:1>ssh 192.168.1.1
+sudo su - openhab</code>
+  - Create an ssh config file
+    - <code:bash linenums:1>vi .ssh/config</code>
+  - Add the following
+    - <code:bash linenums:1>Host winkhub
+  ControlMaster auto
+  ControlPath /tmp/ssh_mux_%h_%p_%r
+  HostName 192.168.1.2
+  User root
+  IdentityFile ~/.ssh/id_rsa</code>
+  - Save and quit the file
+  - As the OpenHAB user, openhab, test the configuration
+    - <code:bash linenums:1>ssh winkhub</code>
+    - You should be automatically logged into the wink, as root, without being prompted for a password. If not, double check the config above, also verify the ssh keys are in place, and configured. 
+  - Once that's working, log out of the wink; you should be back on your OpenHAB server, as the openhab user. 
+  - Create a simple bash script named wink.sh and populate it with the following
+    - <code:bash linenums:1>vi wink.sh</code>
+    - <code:bash linenums:1>#!/bin/bash
+
+if [ ! -e /tmp/ssh_mux_192.168.1.2_22_root ]; then
+  ssh winkhub -N &
+fi
+
+ssh winkhub "/usr/sbin/aprontest $@"</code>
+  - Make the script executable
+    - <code:bash linenums:1>chmod 755 wink.sh</code>
+  - This is where the magic happens, it will do the following:
+    - Allows you to run the aprontest command from the OpenHAB server, and execute those commands on the wink
+    - Pass command line arguments given to wink.sh to aprontest on the wink
+    - This will allow OpenHAB to execute commands on the wink over the network
+  - Give it a try:
+    - <code:bash linenums:1>./wink.sh
+Usage: aprontest [OPTION]...
+Send commands and list information about connected devices
+
+Operations:
+  -a <time>	Add a new home automation device. Add an existing device to a group.
+		Optional: specify a timeout interval in seconds for adding device (default: 60).
+  -n		Manually add a home automation device to the database only.  USE WITH CAUTION.
+		Only supports zigbee at this time.
+  -d		Delete a home automation device. Remove an existing device from a group
+  -f		Force delete a home automation device from the database only.  USE WITH CAUTION.
+		Only supports zigbee at this time.
+  -u		Update the state of a home automation device with a new value
+  -e		Force a refresh of a home automation device
+  -E		Force a reconfigure of a home automation device
+  -p		Add a PIN code to a Z-Wave lock.
+  -q		Specify user ID.
+...
+</code>
+  - Now we can execute commands via the wink.sh script on the OpenHAB server, and they'll get executed on the wink with the aprontest command
+  - Here's an example of how I would turn on my fan (keep in mind, this is being run on the OpenHAB server, by the user openhab)
+    - <code:bash linenums:1>./wink.sh -u -m 13 -t 2 -v TRUE</code>
+  - Hackaday's got a pretty good write-up on how to use aprontest to control your devices, found [[https://hackaday.io/post/15258|here]].
+  - Just remember, any command line argument that you pass to wink.sh will be passed directly to aprontest. So running "wink.sh -h" on the OpenHAB server, is the same as running "aprontest -h" on the wink. 
+  - Move your new "wink.sh" script to your scripts directory; in my case, that's "/etc/openhab/scripts".
+  - Finally create a new item in your OpenHAB items file, here's mine:
+    - <code:bash linenums:1>Switch Bedroom_Fan      "Bedroom Fan"   <fan>           (Bedroom)       { exec="ON:/etc/openhab/scripts/wink.sh -u -m 13 -t 2 -v TRUE, OFF:/etc/openhab/scripts/wink.sh -u -m 13 -t 2 -v FALSE" }</code>
+  - Also make a switch in your OpenHAB sitemap to control the item:
+    - <code:bash linenums:1>Switch item=Bedroom_Fan</code>
+  - Rejoyce! 
+
+====== Updating a Rooted Wink ======
+  * At the time of this writing, I just successfully updated a rooted wink hub from version 2.49 to 2.68 with the following commands. 
+
+  * I do not take credit for these commands, most of them are taken from [[http://rootwink.com/viewtopic.php?f=6&t=4|this]] rootwink post. I've just updated them for current firmware. 
+
+  * mtd2 - Update filesystem
+  * mtd5 - Main filesystem
+===== Rooting the Update Partition =====
+  - Get logged in to your rooted wink, via ssh. You should be at a root prompt. 
+  - Attach the update partition to the system
+    - <code:bash linenums:1>ubiattach -p /dev/mtd2</code>
+  - Create a directory to mount the partition to
+    - <code:bash linenums:1>mkdir /tmp/updater</code>
+  - Mount the update partition to the system
+    - <code:bash linenums:1>mount -t ubifs ubi2:rootfs /tmp/updater</code>
+  - Comment out the reboot command in the update scripts
+    - <code:bash linenums:1>sed -i 's/reboot/#reboot/g' /tmp/updater/root/platform/*.sh</code>
+  - Copy root's .ssh dir to the update partition
+    - <code:bash linenums:1>cp -r /root/.ssh /tmp/updater/root/</code>
+  - Fix permissions on root's new .ssh directory
+    - <code:bash linenums:1>chmod 655 /tmp/updater/root/.ssh</code>
+  - Fix permissions on root's authorized keys file, SSH is very particular about this
+    - <code:bash linenums:1>chmod 644 /tmp/updater/root/.ssh/authorized_keys</code>
+  - Remove S99local //This didn't exist for me, but if it does, it should be removed//
+    - <code:bash linenums:1>rm -f /tmp/updater/etc/init.d/S99local</code>
+  - Re-enable SSH
+    - <code:bash linenums:1>touch /tmp/updater/database_default/ENABLE_SSH</code>
+  - Also copy the authorized_keys file to the new default database, Dropbear checks for this
+    - <code:bash linenums:1>cp /database/authorized_keys /tmp/updater/database_default/</code>
+  - Remove dropbear's ssh config //This also didn't exist for me, but it should be removed if it's present//
+    - <code:bash linenums:1>rm -f /tmp/updater/etc/default/dropbear</code>
+  - Tell the system to update on boot //Without this, the system will simply reboot, and not update//
+    - <code:bash linenums:1>echo "1" /database/DO_UPDATE</code>
+  - Finally, cross your fingers, and reboot!
+    - <code:bash linenums:1>reboot && exit</code>
+
+===== Update the Main FS =====
+  - Log back into your wink via ssh (hopefully)
+    - Note, the ssh host key may have changed on the wink, if so you'll need to remove the old entry from your .ssh/known_hosts file on the linux/mac system you're coming from. 
+  - Verify you're booted into the update partition
+    - <code:bash linenums:1>dmesg | grep ubi0</code>
+      - <code:bash linenums:1>[root@flex-dvt ~]# dmesg | grep ubi0
+Kernel command line: noinitrd console=ttyAM0,115200 rootfstype=ubifs ubi.mtd=2 root=ubi0:rootfs rw gpmi
+UBI: attaching mtd2 to ubi0
+UBI: attached mtd2 to ubi0</code>
+  - Make absolutley sure that the update scripts will not reboot your wink in the process
+    - <code:bash linenums:1>sed -i 's/reboot/#reboot/g' /root/platform/*.sh</code>
+  - Run the updater
+    - <code:bash linenums:1>/root/platform/upgrade.sh</code>
+      - <code:bash linenums:1>[root@flex-dvt ~]# /root/platform/upgrade.sh
+Press enter to cancel update...
+script_version: UPDATE
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0   575    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100   575  100   575    0     0   1464      0 --:--:-- --:--:-- --:--:--  1601
+Group Ids Pass...
+update skipped
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0 30.6M    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+ubiformat: mtd5 (nand), size 80740352 bytes (77.0 MiB), 616 eraseblocks of 131072 bytes (128.0 KiB), min. I/O size 2048 bytes
+libscan: scanning eraseblock 615 -- 100 % complete
+ubiformat: 616 eraseblocks have valid erase counter, mean value is 499
+ubiformat: flashing eraseblock 244 -- 100 % complete
+ubiformat: formatting eraseblock 615 -- 100 % complete
+END</code>
+
+===== Root the Main FS =====
+  - Attach the main filesystem
+    - <code:bash linenums:1>ubiattach -p /dev/mtd5</code>
+  - Make a directory to mount it to
+    - <code:bash linenums:1>mkdir /tmp/rootfs</code>
+  - Mount the main filesystem to the newly created directoy
+    - <code:bash linenums:1>mount -t ubifs ubi2:rootfs /tmp/rootfs</code>
+  - Re-enable SSH
+    - <code:bash linenums:1>touch /tmp/rootfs/database_default/ENABLE_SSH</code>
+  - Re-aneble SSH in the database folder //should already exist, this is just a precaution//
+    - <code:bash linenums:1>touch /database/ENABLE_SSH</code>
+  - Re-enable SSH in the new default database folder //this should also already exist//
+    - <code:bash linenums:1>touch /database_default/ENABLE_SSH</code>
+  - Copy the authorized_keys file to the new default database
+    - <code:bash linenums:1>cp /database/authorized_keys /tmp/rootfs/database_default/</code>
+  - Copy root's .ssh directory to the new filesystem
+    - <code:bash linenums:1>cp -r /root/.ssh /tmp/rootfs/root/</code>
+  - Change permissions on root's new .ssh directory
+    - <code:bash linenums:1>chmod 655 /tmp/rootfs/root/.ssh</code>
+  - Change permissions on roor's new authorized_keys file //Once again SSH is very particular about this//
+    - <code:bash linenums:1>chmod 644 /tmp/rootfs/root/.ssh/authorized_keys</code>
+  - Ensure that the update scripts won't reboot the wink
+    - <code:bash linenums:1>sed -i 's/reboot/#reboot/g' /tmp/rootfs/root/platform/*.sh</code>
+  - Re-enable the serial console
+    - <code:bash linenums:1>sed -i 's/^#tty/tty/g' /tmp/rootfs/etc/inittab</code>
+  - Copy the set_dev_value.php file to the new filesystem //This file didn't exist on my wink, and has been removed in newer firmware, but we want to copy it if it exists//
+    - <code:bash linenums:1>cp /database/set_dev_value.php /tmp/rootfs/var/www/set_dev_value.php</code>
+  - Remove dropbear's config //The config prevents password logins, it will work just fine without it//
+    - <code:bash linenums:1>rm -f /tmp/rootfs/etc/default/dropbear</code>
+  - Reboot again!
+    - <code:bash linenums:1>reboot && exit</code>
+
+===== Verify Root, and Reconfigure =====
+  - Ping you're wink's IP address to verify it's online
+    - <code:bash linenums:1>ping 192.168.1.10</code>
+  - On Linux/Mac systems, remove the old SSH key fingerprint from your .ssh/known_hosts file. //SSH will show you a command to do this for you//
+  - Login to your wink
+    - <code:bash linenums:1>ssh 192.168.1.10</code>
+  - Verify the firmware updated successfully
+    - <code:bash linenums:1>cat /database/cf_*</code>
+      - <code:bash linenums:1>[root@flex-dvt database]# cat /database/cf_*
+00.01
+00.01
+00.12
+00.01
+02.68</code>
+  - This confirms that the update took, and I'm running version 2.68
+  - Re-add the devices that were connected to your wink via the app. 
+    - Or via the command line with: //see aprontest -h for more options//
+      - <code:bash linenums:1>aprontest -a -r zwave</code>
+  - At this point, if you're logged in successfully, everything worked and you have a updated, rooted wink!
+  - Enjoy!
+
+----
+
+  * Because the firmware on the wink was updated, you'll have to re-do any customizations you may of had in place. Like monit or remote logging (see above). 
+==== Useful Links ====
+  * [[https://github.com/openhab/openhab/wiki/Rooted-Wink-Hub|Rooted wink hub]] integrated into OpenHAB. 
+  * [[https://www.exploitee.rs/index.php/Wink_Hub|Exploitee.rs]] wiki, with pictures!
+  * [[https://hackaday.io/post/15258|Hackaday]] aprontest usage.
+
+
+
+//If you come across anything on this page that's inaccurate, please let me know and I'll update the document.// 
+
+10/06/16 20:12
+
+
+
+----
+====== Comments ======
+~~DISQUS~~
