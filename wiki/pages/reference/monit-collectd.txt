@@ -1,0 +1,15 @@
+====== Monit CollectD Config ======
+<code>
+check process collectd with pidfile /var/run/collectd.pid
+	group stats
+	start program "/etc/init.d/collectd start"
+	stop program "/etc/init.d/collectd stop"
+	depends on collectd_rc
+
+check file collectd_rc with path /etc/collectd/collectd.conf
+	group stats
+	if failed checksum then alert
+	if failed permission 644 then alert
+	if failed gid root then alert
+	if failed uid root then alert
+</code>
