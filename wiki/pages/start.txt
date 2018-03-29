@@ -7,4 +7,4 @@
 ----
 
 === Home-Assistant News ===
-{{rss>https://home-assistant.io/atom.xml author date description 1h}}
+{{rss>https://home-assistant.io/atom.xml author date 1h}}
