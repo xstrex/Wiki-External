@@ -1,0 +1,12 @@
+====== Monit Plex Config ======
+
+===== Plex Config =====
+<code>
+check process plex with pidfile "/var/lib/plexmediaserver/Library/Application Support/Plex Media Server/plexmediaserver.pid"
+   start program = "/etc/init.d/plexmediaserver start"
+   stop  program = "/etc/init.d/plexmediaserver stop"
+   if failed host 192.168.1.1 port 32400 then restart
+   if 5 restarts within 5 cycles then alert
+   if memory > 250 MB then alert
+   if 5 restarts within 5 cycles then timeout
+</code>
