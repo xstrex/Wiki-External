@@ -1,0 +1,8 @@
+====== NTPD Monit Config ======
+
+<code>
+check process ntpd with pidfile /var/run/ntpd.pid
+   start program = "/etc/init.d/ntp start"
+   stop  program = "/etc/init.d/ntp stop"
+   if failed host 192.168.1.1 port 123 type udp then alert
+</code>
