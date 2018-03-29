@@ -1,3 +1,4 @@
 ====== New Server Setup ======
 
-  * [[:super-configs|Supervisor]]
+  * [[:super-configs|]]
+
