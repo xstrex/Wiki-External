@@ -10,9 +10,9 @@
       * [[home_automation:lifx-hacking|Lifx]]
       * [[home_automation:dht22-sensor|Temp/Humidity]]
 **  Outdoor Adventures**
-      * [[Hiking|Hiking]]
+      * [[outdoor_adventures:hiking|Hiking]]
       * [[Backpacking|Backpacking]]
-      * [[Recipes|Recipes]]
+      * [[outdoor_adventures:recipes|Recipes]]
 **  Reference**
-      * [[server-setup|New Server Setup]]
-      * [[monit configs|Monit Configs]]
+      * [[reference:server-setup|New Server Setup]]
+      * [[reference:monit_configs|Monit Configs]]
