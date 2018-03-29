@@ -9,5 +9,5 @@ I use [[http://lighterpack.com|Lighterpack.com]] to keep track of all my gear an
 
 ====== Trip Reports ======
 
-<olmap id="olMapOne" width="550px" height="450px" lat="50.0" lon="5.1" zoom="12" statusbar="1" controls="1" poihoverstyle="0" baselyr="OpenStreetMap" gpxfile="outdoor_adventures:12312017.gpx" kmlfile="" geojsonfile="" summary="" >
+<olmap id="olMapOne" width="550px" height="450px" zoom="12" statusbar="1" controls="1" poihoverstyle="0" baselyr="OpenStreetMap" gpxfile="outdoor_adventures:12312017.gpx" kmlfile="" geojsonfile="" summary="" >
 </olmap>
