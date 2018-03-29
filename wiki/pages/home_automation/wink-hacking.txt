@@ -104,7 +104,7 @@ If you've followed the guide above, and optionally enabled monit, here's how to 
     - <code:bash linenums:1>http://<wink IP>:2812</code>
     - When prompted, enter the username and password you set above. 
   - When you're logged in, you should be presented with a page that looks something like this, I'd suggest not stopping or restarting any services, unless you know what you're doing: 
-{{::wink-monit.png?direct&100|}} 
+{{wiki:wink-monit.png?direct&100|}} 
 
 ===== Controlling the Wink with OpenHAB =====
 If you're still with me, and you've chosen to run OpenHAB here's how to get the wink to play nice. 
