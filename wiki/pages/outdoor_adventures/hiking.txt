@@ -9,5 +9,4 @@ I use [[http://lighterpack.com|Lighterpack.com]] to keep track of all my gear an
 
 ====== Trip Reports ======
 
-This section is a work in progress, I hope to develop a form method in which I can upload a gpx file for download, as well as render a map and elevation plot of the trip, as well as a report. More to come.
 
