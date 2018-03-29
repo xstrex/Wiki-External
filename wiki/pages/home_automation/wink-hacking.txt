@@ -50,7 +50,7 @@ I assume, if you've gotten this far you have some basic experience with VI, if n
 127.0.0.1        hub-updates.winkapp.com
 127.0.0.1        wink-hub-images.s3.amazonaws.com</code>
     - Save and quit the file.
-  - Optionally enable the monit web gui, monit comes pre-installed on the wink. I use monit on all of my systems, more info can be found [[monit_configs|here]].
+  - Optionally enable the monit web gui, monit comes pre-installed on the wink. I use monit on all of my systems, more info can be found [[reference:monit_configs|here]].
     - Edit the monit config file
       - <code:bash linenums:1> vi /etc/monitrc </code>
       - After the line that reads "set daemon 15" add the following text:
