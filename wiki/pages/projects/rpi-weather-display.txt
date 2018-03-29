@@ -22,7 +22,7 @@ I've made a few simple modifications to the weather.py file. Below are the affec
       - Lines 655-694, 833-847
 
 ==== Supervisor vs rc.local ====
-The instructables page talks about running the weather.py script via rc.local so that it starts on boot. I'm personally not a fan of that option, so I've implemented a little program called Supervisor to help with that. More information on Supervisor can be found [[super-configs|here]], or on their [[http://supervisord.org/|site]]. 
+The instructables page talks about running the weather.py script via rc.local so that it starts on boot. I'm personally not a fan of that option, so I've implemented a little program called Supervisor to help with that. More information on Supervisor can be found [[:super-configs|here]], or on their [[http://supervisord.org/|site]]. 
 
 Supervisor will not only run the script in question, but will also handle the standard error/out logs, as well as attempt to restart the script if it dies for some reason. rc.local just isn't natively intelligent enough to do all that.  
 
