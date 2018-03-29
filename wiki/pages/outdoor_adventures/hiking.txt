@@ -10,5 +10,6 @@ I use [[http://lighterpack.com|Lighterpack.com]] to keep track of all my gear an
 ====== Trip Reports ======
 
 <olmap id="olMapOne" width="550px" height="450px" lat="39.6228" lon="-105.3467" zoom="18" statusbar="0" controls="1" poihoverstyle="0" baselyr="OpenStreetMap" gpxfile="outdoor_adventures:12312017.gpx" kmlfile="" geojsonfile="" summary="Evergreen Mountain" >
+Evergreen Mountain
 </olmap>
 {{ :outdoor_adventures:12312017.gpx |}}
