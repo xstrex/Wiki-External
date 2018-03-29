@@ -1,0 +1,18 @@
+
+**  Projects**
+      * [[recalbox|RecalBox]]
+      * [[rpi-weather-display|Weather Display]]
+      * [[RAV4 Headunit|RAV4 Headunit]]
+**  Home Automation**
+      * [[OpenHAB|OpenHAB]]
+      * [[home-assistant|Home-Assistant]]
+      * [[wink-hacking|Wink Hacking]]
+      * [[lifx-hacking|Lifx]]
+      * [[dht22-sensor|Temp/Humidity]]
+**  Outdoor Adventures**
+      * [[Hiking|Hiking]]
+      * [[Backpacking|Backpacking]]
+      * [[Recipes|Recipes]]
+**  Reference**
+      * [[server-setup|New Server Setup]]
+      * [[monit configs|Monit Configs]]

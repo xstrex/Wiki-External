@@ -1,0 +1,12 @@
+====== Hiking Gear ======
+
+I use Lighterpack.com to keep track of all my gear and weights, I find it especially useful when packing up for a trip. Here's a few of my current gear list:
+
+[[https://lighterpack.com/r/4t5dgw|Summer Day Hike]]
+
+[[https://lighterpack.com/r/a38pfi|Snowshoeing Day Hike]]
+
+====== Trip Reports ======
+
+This section is a work in progress, I hope to develop a form method in which I can upload a gpx file for download, as well as render a map and elevation plot of the trip, as well as a report. More to come.
+

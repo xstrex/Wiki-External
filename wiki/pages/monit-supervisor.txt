@@ -1,0 +1,22 @@
+====== Monit Supervisor Config ======
+
+<code>
+check process supervisor with pidfile /var/run/supervisord.pid
+   start program  "/usr/sbin/service supervisor start"
+   stop program  "/usr/sbin/service supervisor stop"
+   if 5 restarts within 5 cycles then timeout
+   depends on supervisor_rc
+   depends on supervisor_bin
+
+check file supervisor_rc with path /etc/supervisor/supervisord.conf
+   if failed checksum then alert
+   if failed permission 644 then alert
+   if failed uid root then alert
+   if failed gid root then alert
+
+check file supervisor_bin with path /usr/bin/supervisord
+   if failed checksum then alert
+   if failed permission 755 then alert
+   if failed uid root then alert
+   if failed gid root then alert
+</code>

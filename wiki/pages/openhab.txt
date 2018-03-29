@@ -1,0 +1,64 @@
+====== OpenHAB ======
+A vendor and technology agnostic open source home automation system. For more information on OpenHAB, checkout their [[http://www.openhab.org|Website]]. 
+
+----
+
+There are currently 2 versions of OpenHAB, 1.x and 2.x. 1.x has been around for a while, and has fairly extensive support for lots of different technologies. At the time of this writing 2.x is still relatively new. It's promising but it's support for several main home automation technologies is still a bit buggy. 
+
+----
+
+I'm currently using the 1.x branch with quite a bit of success. 
+
+===== Installing OpenHAB =====
+==== Initial Setup ====
+Install Oracle JDK
+<code:bash linenums:1>
+sudo apt-get install -y oracle-java8-jdk
+</code>
+
+==== Install repo & base package ====
+Follow this guide to setup the repo, and get the base package installed: [[https://github.com/openhab/openhab/wiki/Linux-and-OS-X]]
+
+==== Install additional packages ====
+Please note, these are packages that I use, in my own environment. 
+<code:bash linenums:1>
+apt-get install -y openhab-addon-action-harmonyhub openhab-addon-action-mail openhab-addon-action-mqtt openhab-addon-action-pushover openhab-addon-action-weather openhab-addon-binding-bluetooth openhab-addon-binding-harmonyhub openhab-addon-binding-http openhab-addon-binding-insteonhub openhab-addon-binding-mqtt openhab-addon-binding-plex openhab-addon-binding-tivo openhab-addon-binding-weather openhab-addon-io-dropbox openhab-addon-io-harmonyhub openhab-addon-io-myopenhab openhab-addon-persistence-mqtt
+</code>
+
+----
+
+
+===== Raspbian Specific Notes =====
+  * If OpenHAB is running on a RaspberryPi with Raspbian, and you are running it as a headless system, then there is no need to save lots of ram for use by the GPU. To minimize this run:
+  * <code>raspi-config</code>
+  * And set the memory-split (in advanced options) to "16". Exit rasp-config, and reboot.  
+
+----
+
+  * By default the /tmp directory is part of the root filesystem and because of this, it's written to your SD card. Which is ok, except that SD cards have slower IOPS, and thus will slow down your system. Not to mention it will decrease (over time) the life expectancy of your SD card. To fix this we can make your /tmp filesystem a RAM filesystem! To do this run:
+  * <code:bash linenums:1>sudo vi /etc/default/tmpfs</code>
+  * Uncomment #RAMTMP=yes
+  * Save & quit. The change will take effect on the next reboot. 
+
+----
+
+  * OpenHAB requires a JRE, but according to the internet OpenJRE has some limitations, and doesn't play nicely with my.openhab because of an SSL issue. They suggest using Oracle's Java JRE instead. But when installing OpenHAB it automagially installs OpenJRE, and uses it by default. After some research I found out that Oracles JRE comes pre-installed with the Raspbian image. So to switch the java version from OpenJRE to OracleJRE run the following command:
+  * <code>sudo update-alternatives --config java</code>
+  * It should look something like this:
+  * <code:bash linenums:1>There are 2 choices for the alternative java (providing /usr/bin/java).
+
+  Selection    Path                                                 Priority   Status
+------------------------------------------------------------
+  0            /usr/lib/jvm/java-6-openjdk-armhf/jre/bin/java        1057      auto mode
+  1            /usr/lib/jvm/java-6-openjdk-armhf/jre/bin/java        1057      manual mode
+* 2            /usr/lib/jvm/jdk-8-oracle-arm-vfp-hflt/jre/bin/java   318       manual mode</code>
+  * After making this change, my.openhab magically started working, and strangely enough the Harmony Binding started working as well! I've noticed some performance improvements as well, mainly the start-up time is much shorter, and the OpenHAB engine seems to be a little quicker as well. 
+
+----
+
+  * Also, I had some very odd start-up issues where OpenHAB would start, loading everything up until the default.items then silently die. I had to manually restart the service, usually multiple times to get it to work. But once again after reading some info on the interwebs I found that someone with a similar issue reported that chowing /usr/share/openhab & /var/lib/openhab to the openhab user & group fixed the issue. But apparently this was resolved in OpenHAB 1.7.x. Well I have 1.7.x installed on the latest Raspbian and those 2 directories are still owned by root, so to fix this run:
+  * <code:bash linenums:1> sudo chown -R openhab:openhab /usr/share/openhab && sudo chown -R openhab:openhab /var/lib/openhab </code>
+  * Now OpenHab starts up everytime, and loads quite quickly thanks to OracleJRE!
+
+
+~~DISQUS~~
