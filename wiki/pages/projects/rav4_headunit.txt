@@ -1,0 +1,322 @@
+====== RAV4 Headunit ======
+The following documentation is specific [[https://www.aliexpress.com/item/Android-6-0-Car-Multimedia-Player-Stereo-For-TOYOTA-RAV4-DVD-Bluetooth-Radio-Audio-Mirrorlink-Capacitive/32756399750.html|this]] Bonroad headunit offered on AliExpress.
+It may apply to [[https://www.amazon.com/JOYING-2006-2011-Android-Bluetooth-Receiver/dp/B01MT8AK2F|others]], but your milage may vary. 
+
+Please note, I will not be held responsible for damages to the head unit, or car, by following any of the instructions herein. Please use caution, and proceed at your own risk. This site has no affiliation with www.rav4world.com or any of it's affiliates. 
+
+If you have questions, comments, complaints, etc, please use the Disqus form below, or visit the RAV4 [[http://www.rav4world.com/forums/98-4-3-interior/251353-new-android-head-unit.html|forum]] for disussions on this (and other) head units. 
+===== Purchase Information & Options =====
+At the time of this writing the [[https://www.aliexpress.com/item/Android-6-0-Car-Multimedia-Player-Stereo-For-TOYOTA-RAV4-DVD-Bluetooth-Radio-Audio-Mirrorlink-Capacitive/32756399750.html|headunit]] is only available from AliExpresss, and ranges in price from $226.14 - $296.44 depending on options. 
+
+There are currently 3 options available:
+  * 2GB RAM 16GB ROM 
+  * 2GB RAM 32GB ROM
+  * 1GB RAM 16GB ROM
+===== Pictures =====
+{{:img_0158.jpg?400|}}
+===== Installation Instructions =====
+==== Without JBL ====
+The Manufacturer and other users on the forum report that this headunit is simply plug & play. I would appreciate some additional steps & pictures to expand this section. 
+==== With JBL ====
+This headunit can be successuflly installed in a RAV4 with JBL. You'll need an adapter to connect between the factory wiring harness, and the headunit. This can be purchased from various manufacturers. [[http://www.pac-audio.com/productDetails.aspx?ProductId=281|Here's]] the one I use. From the manufacturer: Retains functionality of the factory-installed JBL audio system when the factory Toyota radio is replaced. Compatible with all level JBL systems including JBL Synthesis®.
+
+===== Stock Apps =====
+
+
+===== 3rd Party Apps =====
+Here's a short list of 3rd party apps that myself, or others have installed on the headunit to add functionality.
+
+==== Navigation ====
+=== Offline ===
+  * [[https://play.google.com/store/apps/details?id=com.sygic.aura&hl=en|Sygic]]: Sygic is the world’s most installed offline GPS navigation app with real-time traffic for Android with free 3D offline maps from TomTom. Sygic offers the most accurate real-time traffic information with data collected from 500 million users world-wide, provided by global automotive, mobile operators, mapping & traffic information suppliers. 
+  * Price: Freemium (In-App Purchases, $9.99 - $37.49)
+  * Notes: This app works great for off-line mapping, after the initial install, and setup, you'll have to purchase maps which are then downloaded in-app. They also offer some pretty nice add-ons, for a small fee. The spoken language used for driving directions is a little off in my opinion, a lot of the english language packs have a European accent. You'll see what I mean, it makes for an entertaining drive! (I personally use this for offline mapping) 
+
+----
+  * [[https://play.google.com/store/apps/details?id=com.nng.igo.primong.igoworld|iGO]]: Join millions of travelers around the world and take the journeys that matter. Using half the storage space of many other navigation apps, iGO Navigation is an offline app that guides you on adventures around the world. 
+  * Price: Freemium (In-App Purchases, $0.99 - $34.99)
+  * Notes: 
+
+=== Online ===
+  * [[https://play.google.com/store/apps/details?id=com.waze&hl=en|Waze]]: Avoid traffic jams, police traps, and accidents with Waze, the #1 real-time GPS navigation app. Get the fastest routes to your favorite locations and new destinations, all for free.
+  * Price: Free
+  * Notes: Waze has the ability to cache map data to your device for offline use, but because of it's live data, it requires on internet connection, though after initial setup, it won't use too much data. (This is what I personally use)
+
+----
+  * [[https://play.google.com/store/apps/details?id=com.google.android.apps.maps&hl=en|Google Maps]]: Going somewhere? Go with Maps, the official app you can rely on for real-time GPS navigation, traffic, transit, and details about millions of places, such as reviews and popular times.
+  * Price: Free
+  * Notes: This can be used offline as well, if you download the maps you need, for your area ahead of time. The downloaded maps will expire in 30days, and you'll need to re-download them. 
+==== Utilities ====
+==== Launchers ==== 
+If you're unfamiliar with these, launchers are apps, that are used to manage the interface. They create desktops for widgets, the dock, and even the menu that holds all the apps, or app drawer. Without a launcher, android wouldn't work at all. The stock launcher is fairly large, colorful, and lacking in features. Here's a few more you can try. **__Note__**: After installing one of these, and pressing "home", a menu will appear asking you which launcher to use, and when to use it. Here you can select the native launcher, or any other launcher you have installed. If you choose "Always", it will use whatever launcher you select, as the default. To switch back to a different launcher, open //Settings// and top on //Home//. Here you select which launcher you want to use. 
+
+ ---- 
+  * [[https://play.google.com/store/apps/details?id=com.teslacoilsw.launcher&hl=en|Nova Launcher]]: The highly customizable, performance driven, home screen. Accept no substitutes! Nova Launcher is the top launcher for modern Android, embracing full Material Design throughout.
+  * Price: Freemium ([[https://play.google.com/store/apps/details?id=com.teslacoilsw.launcher.prime&hl=en|Prime]])
+  * Notes: Highly customizable, extensive gesture support which makes launching apps, while driving, a breeze. The desktop & app-drawer can also be made full-screen, hiding the status bar, which looks great in my opinion. Support day & night color schemes, with automatic switching, based on sun position. Also the app drawer can be organized into tabs, based on activity, and the colors can be customized to match the interior lights on the RAV4, which provides a more stock look. (I personally use, and highly recommend this launcher)
+
+----
+  * [[https://play.google.com/store/apps/details?id=com.autolauncher.motorcar.free&hl=en|Car Launcher]]: We present You Launcher, which was created specifically for use in the car. You can use this software on your phone, tablet or on the radio based on Android. We have combined not only a convenient start programs, but the speedometer with the easy calculation of traveled distance for different periods.
+  * Price: Free Trial ([[https://play.google.com/store/apps/details?id=com.autolauncher.motorcar&hl=en|Pro Version]])
+  * Notes: Used by [[http://www.rav4world.com/forums/98-4-3-interior/251353-new-android-head-unit.html#post2312785|Bjmsam]] in this post (With picture). This is a relative newcomer in the car launcher space, yet offers some interesting features. Like a virtual odometer (based on gps), and a customizable gui. After running this for about a week, I felt like it was a bit clunky, and unintuitive. It also felt a little bloated in my opinion, your milage may vary.  
+
+===== Tips and Tricks =====
+
+==== Manufacturers Menu ====
+Reported by: [[http://www.rav4world.com/forums/98-4-3-interior/251353-new-android-head-unit-11.html#post2370034|tunabreath]]
+
+Go into Settings, then About, Tap kernel, then OS version, then Kernel, then OS version, then Kernel, then OS version and you will be taken to another screen. 
+
+=== Menu Options ===
+AKA Factory Settings. At the time of this writing, I've recently upgraded to the latest official release, version numbers reflect that, yours might be different. Here's the menu layout. Details on a few of the menus are listed below.
+  * build.version
+    * unknown
+  * App Version (contains the version number of the default, system apps)
+    * TV (3.1)
+    * DTV (2.1)
+    * Wheel (2.0)
+    * Video (2.1)
+    * Disc (2.1)
+    * Misc (2.0)
+    * Car Info (2.1)
+    * CarMedia (1.6)
+    * Phone (2.1)
+    * CarServer (3.0)
+    * F. Camera (2.0)
+    * ColorLED (2.0)
+    * Upgrade (3.0)
+    * EG (2.0)
+    * CanbusAirInfo (2.0)
+    * AuxIn (2.1)
+    * Music (2.1)
+    * Radio (2.1)
+  * Module (If any option in this list is changed, it will not take effect until to headunit is rebooted)
+    * iPod (on)
+    * Motor (off)
+    * F.Camera (on)
+    * DVR (on)
+    * Logo Select (on)
+    * AUX In (on)
+    * ColorLED (on)
+    * Disc (on)
+    * Voice (on)
+    * Phone Link (on)
+    * OBD (on)
+    * ATV (on)
+    * BT (on)
+    * Navi (on)
+    * DTV (off)
+    * DAB (on)
+    * Small LCD function (off)
+    * Flipping mechanism (off)
+    * Press back key into normal source (on)
+    * Check emulated music (on)
+  * Radio
+    * Radio Area (USA)
+    * Radio Model (7786)
+    * FM Local (7)
+    * FM DX (7)
+    * AM Local (7)
+    * AM DX (7)
+  * Other
+    * CAN Type (0 No CAN)
+    * BT Module (IVT)
+    * Panel Type (Double knob general(410))
+    * Display Type (HD(1024*600))
+    * SD card (Normal)
+    * DTV Module (Standard(Touch point))
+    * Display size (Small)
+    * Panel learning
+      * Key learning
+        * Various options for assigning keys to functions
+      * Knob learning
+        * The left-hand knob reverses (on)
+        * The right-hand know reverses (off)
+        * Left and right knob interchangeable (on)
+      * Power key function (False shutdown)
+        * False shutdown
+        * Really shutdown
+      * Backlight level learning
+        * Various options for selecting the brightness level of the panel
+      * Export panel data
+        * Save path (USB1)
+        * Export the panel configuration file
+  * Export config data
+
+=== Backlight level learning ===
+Tap Other. Tap "Panel Learning". That should bring up a screen with 5 different brightness settings and a 0-255 slider. Adjust slider to 50 then tap and hold on the first brightness preset and it will set it to that. I did my 5 brightness settings in 50 increments. The head unit now dims with the headlights on.
+
+=== BT Module ===
+This appears to be the manufacturer of the BT module, installed in the unit: [[http://www.ivtcorporation.com/|IVT]] 
+
+=== CAN Type ===
+This option is used for selecting the type of CAN bus used in the vehicle. If selected, many different automotive manufacturers appear in the list. This option appears to be directly connected to the "Car Info" app. If this option is set to "0 No CAN", the "Car Info" app will not appear, or run. But if the option is set to something greater than "0", then the "Car Info" app appears. Granted, there's no info in the app, because it's not actually connected to the CAN bus. 
+
+=== Logo Select ===
+In the current manufacturer's firmware, this option does nothing. I believe the logo select app is not installed by default, as I couldn't find it anywhere on the system. Your milage may vary. 
+
+=== Radio ===  
+  * Radio Area: USA, China, Japan, Europe, Arab, OIRT, South America 1, South America 2, Korea, Australia. 
+  * Radio Model: 6686, 6856, 7786
+  * FM Local: 0-15
+  * FM DX: 0-15
+  * AM Local: 0-15
+  * AM DX: 0-15
+
+==== Quick Settings (AKA System UI Tuner)====
+When you pull down the notification bar, from the top of the screen, first you get all your recent notifications, if you keep pulling down, you'll get access to some quick settings, like wifi, location, screen-brightness, etc. These can be customized, here's how to do it. 
+  - From any screen, pull down the notification bar
+  - Pull down again, to reveal the quick settings
+    - Press and hold the cog, or gear icon for ~10secs
+    - release
+  - You'll be taken to a screen titled, "System UI Tuner"!
+    - From here you've got 2 main menus, that concern us
+      - Quick Settings
+        - This is where you can customize what settings appear in the quick settings pane. 
+          - I personally go with a minimalist approach and choose to disable anything that I don't need, like, rotation lock, gps (should always be on), screen-cast, etc. And only enable things like Wifi. 
+          - Simply drag icons you don't want to the trash, or click "add tile" to add items back that you do want.
+        - When done, just click back.
+      - Status Bar
+        - This allows you to enable, or disable certain icons from appearing in the status bar.
+          - Once again, I disable damn near everything, just to keep the display uncluttered. 
+        - A few notes
+          - If you disable an icon, it only means that the icon will no longer show up. So if you disable WIFI here, but WIFI is still turned on, the WIFI icon will not show up. But WIFI is still technically on. 
+          - If an icon is enabled, but the device is off, no icon will appear. For instance, if you enable hotspot, but hotspot tethering is turned off, the hotspot icon will not show up.  
+        - Once again, press back to exit the screen
+      - The last 2 options are rarely used.
+    - Then press home to exit completely
+  - To get back to the quick settings screen, now that it's enabled, simply open up settings, and look for System UI Tuner, under System
+
+
+
+ 
+
+
+===== Updates =====
+To install the update files follow the instructions below: 
+
+Please note, after upgrading os_update.zip, it will wipe the data partition, and you will loose all your settings!! If applicable, __make backups first!!__
+
+  - Using a USB flash drive (formatted for MS-DOS 16/32)
+    - Copy the update files to the root directory of the drive (mcu.bin & os_update.zip)
+      - Do not extract os_update.zip, the installer will do this for you
+    - Start your RAV4
+      - I would not recommend ACC, since power will have to be applied for the duration of the update (roughly 20mins)
+    - Once the headunit is up, and operational
+      - Stick the USB drive into the headunit, in either
+        - The back of the unit
+        - Using the Micro-USB -> USB on the front of the unit
+      - Once detected, the update utility will launch automatically.
+      - Initially it will only find the mcu.bin file, this is fine. 
+        - Click Next
+        - Wait for the update to finish; the headunit will reboot afterwards
+          - Leave the USB drive attached
+      - Once it's back up
+        - If the update utility opens, press back (or Menu) to escape the utility.
+          - Open ES File Explorer (should be installed by default)
+          - browse to the USB drive
+          - Delete the mcu.bin file
+            - The only file remaining should be os_update.zip, on the root of the drive.
+          - Close ES File Explorer, by pressing back until it exits. 
+        - Remove the USB drive
+        - Plug the USB drive back in
+        - The update utility should launch again
+          - This time you should be os_update.zip
+          - Click Next
+          - Wait for the update to finish; the headunit will __reboot twice during this process__
+            - Please note, there are 2x steps in this process
+              - The first is done via the update utility (I suspect it's extracting the os_update.zip)
+              - The second is done after it automatically reboots, the first time.
+            - While it's rebooting the second time, remove the USB drive. 
+  - Have fun reconfiguring the headunit! 
+
+==== Manufacturer ====
+The updates listed here are offered directly from the manufacturer. I'll try to keep the links to these updates current, if you have a link to the update files please let me know, and I'll get it added. Also, I'll do my best to list the release dates (and changes) for the updates. 
+
+Reported by: [[http://www.rav4world.com/forums/98-4-3-interior/251353-new-android-head-unit-8.html#post2353929|bjmsam]]
+
+  * [[http://redirect.viglink.com/?format=go&jsonp=vglnk_149564990848713&key=a90c3b6885ae00ebac71798ef989f665&libId=j33b6ijx010006e1000DAoderaoi9&loc=http%3A%2F%2Fwww.rav4world.com%2Fforums%2F98-4-3-interior%2F251353-new-android-head-unit-8.html&v=1&out=http%3A%2F%2Fmail.qq.com%2Fcgi-bin%2FftnExs_download%3Ft%3Dexs_ftn_download%26k%3D5a6234619ecfc4ce1b9f66f347300b1e0355550253025b534b075105581d0d555052190004000f1c5453035353525d0955560d566137395c05171a03085e390c%26code%3Dfb4aa091&ref=http%3A%2F%2Fwww.rav4world.com%2Fforums%2F98-4-3-interior%2F251353-new-android-head-unit-9.html&title=New%20Android%20Head%20Unit%20-%20Page%208%20-%20Toyota%20RAV4%20Forums&txt=mcu.bin|mcu.bin]]
+  * [[http://redirect.viglink.com/?format=go&jsonp=vglnk_149564999260316&key=a90c3b6885ae00ebac71798ef989f665&libId=j33b6ijx010006e1000DAoderaoi9&loc=http%3A%2F%2Fwww.rav4world.com%2Fforums%2F98-4-3-interior%2F251353-new-android-head-unit-8.html&v=1&out=http%3A%2F%2Fmail.qq.com%2Fcgi-bin%2FftnExs_download%3Ft%3Dexs_ftn_download%26k%3D7b6362340f098af8449e30a6133803180b065b52560b520514025055531505040d024f55050b571a09055b57540907045b500105353531584a3c17445159455217190b443505%26code%3D9cb45817&ref=http%3A%2F%2Fwww.rav4world.com%2Fforums%2F98-4-3-interior%2F251353-new-android-head-unit-9.html&title=New%20Android%20Head%20Unit%20-%20Page%208%20-%20Toyota%20RAV4%20Forums&txt=os_update.zip|os_update.zip]]
+
+
+==== 3rd Party ====
+The updates listed below are NOT offered directly by the manufacturer, but instead are offered by third parties, you're milage my vary. If these updates worked for you, please let me know and I'll update this documentation. 
+
+----
+
+Posted by: [[http://www.rav4world.com/forums/98-4-3-interior/251353-new-android-head-unit-9.html#post2355825|bjmsam]]:[[https://forum.xda-developers.com/showpost.php?p=71940849&postcount=49|Source]] The following are for units whos software is post December 2016.
+
+  * 28 Feb 2017:
+  * MCU - https://drive.google.com/open?id=0B7Uw1oCCyOAAVm5KbFFLTGx0aDA
+  * OS - https://drive.google.com/open?id=0B7Uw1oCCyOAATHQ3bFo0aWdMRjQ
+
+  * 6 Mar 2017:
+  * MCU - https://drive.google.com/open?id=0B7Uw1oCCyOAAa0ItVWJFSFlDWW8
+  * OS - https://drive.google.com/open?id=0B7Uw1oCCyOAAbm9MNUFUbzAtYTg
+
+  * 30 Mar 2017:
+  * MCU - https://drive.google.com/open?id=0B7Uw1oCCyOAAZlJWNUlINHFuOEk
+  * OS - https://drive.google.com/open?id=0B7Uw1oCCyOAAMmlmU3FfaUIwTlk
+
+  * 13 Apr 2017:
+  * OS - https://drive.google.com/open?id=0B7Uw1oCCyOAATHFJMmJXek52U0U
+  * Config - https://drive.google.com/open?id=0B7Uw1oCCyOAAWUVBVzRxMnhBWG8
+
+  * 19 Apr 2017:
+  * OS - https://drive.google.com/open?id=0B7Uw1oCCyOAAZXhFeDN0YVdfMjg
+
+  * 9 Jun 2017:
+  * OS - https://yadi.sk/d/KjcOlsTg3JyEjy
+    * MD5 (os_update.zip) = 708cec4be7effbf35a472e9ee32ca2aa
+  * MCU - https://yadi.sk/d/cYsl3n8S3Jy4gm
+    * MD5 (mcu.bin) = ba371f5bfddb5015b9c5911b1115d55d
+
+=== Changes ===
+  * 9 June 2017:
+    * OS_Update:
+<code linenums:1>
+63B	Jun 8 23:44	./system/etc/firmware/rtl8703bs_config
+51B	Jun 8 23:44	./system/etc/firmware/rtl8723as_config
+59B	Jun 8 23:44	./system/etc/firmware/rtl8723bs_config
+67B	Jun 8 23:44	./system/etc/firmware/rtl8723bs_VQ0_config
+63B	Jun 8 23:44	./system/etc/firmware/rtl8723cs_cg_config
+63B	Jun 8 23:44	./system/etc/firmware/rtl8723cs_vf_config
+63B	Jun 8 23:44	./system/etc/firmware/rtl8723cs_xx_config
+1.1K	Jun 8 23:44	./system/etc/security/otacerts.zip
+19B	Jun 8 23:44	./system/etc/wifi/p2p_supplicant_overlay.conf
+19B	Jun 8 23:44	./system/etc/wifi/wpa_supplicant_overlay.conf
+2.0M	Jun 8 23:44	./system/media/bootanimation.zip
+</code>
+
+===== References =====
+
+===== More Information =====
+  * [[https://www.gpspower.net/igo-maps.html|iGO Map Updates 1]]
+
+  * The pre out's on this particular unit are 3.5 volts (reported by: [[http://www.rav4world.com/forums/98-4-3-interior/251353-new-android-head-unit-3.html#post2316961|tRAVellintom]])
+
+  * [[http://4pda.ru/forum/index.php?showtopic=806442|Russian Forum]]
+
+===== FAQ =====
+Frequently asked questions, related to the headunit. 
+  * Can you install free GPS software such as HereMaps on this unit?
+    * Yes, you've got full access to the Android App Store.
+  * How do these units' screens fare in the sun?
+    * The visibility is fine in the sun on the highest brightness setting. Not much glare, although when using the stock music player it is a bit dim since the color scheme is all black.
+  * Can you run the GPS and make a BlueTooth phone call at the same time?
+    * Technically yes, though I'll have to verify it. 
+  * Can you adjust the MID in the sound settings?
+    * Yes, there's an app that allows you to adjust the EQ
+  * I see this is set to military time...is that changeable?
+    * Yes, it's android
+  * Is there an option to change the backlighting color?
+    * Depends on the unit, at the time of this writing the color options were white, or amber, specified via a message to the seller at time of purchase. There is a hidden (by default) app called "colorLED" which (at least on my unit), does not change the color of the backlighting. Your milage may vary. 
+  * Do you need anything additional to use the steering wheel controls?
+    * No, the work out of the box, and can be configured with the "Wheel" app. 
+
+
+===== Discussion =====
+Most discussion should take place on the [[http://www.rav4world.com/forums/98-4-3-interior/251353-new-android-head-unit.html|RAV4World forums]].
+
+If you'd like to discuss anything related __specifically__ to the above documentation please use the form below. 
+~~DISQUS~~
