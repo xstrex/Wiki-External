@@ -1,0 +1,57 @@
+====== Raspberry Pi Weather Display ======
+So I grabbed an official raspberry pi display when it came out, as well as the case for it, and promptly put the whole thing together. It worked great, but I was struggling to find a purpose for it. So after searching the internet for a while I came across a project, written in python, that used the pygame libraries to display current and upcoming weather conditions. The origional project was hosted [[http://www.ph-elec.com/|here]], but the site seems to be offline. 
+
+I managed to find the files, and some instructions on [[http://www.instructables.com/id/Raspberry-Pi-Internet-Weather-Station/|instructables]]. The source code can be downloaded from  [[http://www.instructables.com/files/orig/FAQ/7BWL/I1NULEIL/FAQ7BWLI1NULEIL.zip|here]] or {{wiki:Weather.zip}}. All credit for this project should go to the author of the instructable, he did all the hard work, I just made it work for myself. 
+
+Here's what it looks like:
+
+{{:wiki:py-weather.jpg?direct&200|}}
+
+
+
+
+===== Customizations =====
+I've made a few simple modifications to the weather.py file. Below are the affected line numbers, and their changes.  
+  - First off, because I wasn't planning on using the GPIO pins of the Pi, I commented (#) them out.
+      - Lines 52-55, 715, 717-731, 741-758
+  - To accommodate for the wider display I changed line 128 to
+      - <code linenums:1>self.ymax = 480 - 5</code>
+  - Update line 164 with your zip code
+      - <code linenums:1>self.w = pywapi.get_weather_from_weather_com( 'ZIPCODE', units='imperial' )</code>
+  - Completely comment out the X10 functionality, as I use OpenHAB for this
+      - Lines 655-694, 833-847
+
+==== Supervisor vs rc.local ====
+The instructables page talks about running the weather.py script via rc.local so that it starts on boot. I'm personally not a fan of that option, so I've implemented a little program called Supervisor to help with that. More information on Supervisor can be found [[super-configs|here]], or on their [[http://supervisord.org/|site]]. 
+
+Supervisor will not only run the script in question, but will also handle the standard error/out logs, as well as attempt to restart the script if it dies for some reason. rc.local just isn't natively intelligent enough to do all that.  
+
+Supervisor is a great tool to manage scripts which need to run like a service, but lack the complexity of a service, such as weather.py. Once Supervisor is installed, you'll want to setup a config file for weather.py. 
+
+I've placed my py-weather installation into /opt to help keep my home directory clean. Also because it's generally a bad idea to run scripts (which will act like a service) out of your home directory. If you accidently delete the directory containing the script, you're SOL. So here's my supervisor config for the py-weather script:<code linenums:1>
+[program:python-weather]
+directory = /opt/py-weather
+command = /usr/bin/python /opt/py-weather/weather.py
+user = root</code>
+//because this is running on my internal network, and doesn't create a web socket I'm not too concerned with running the script as root. If this were accessible publicly, no way!//
+
+A quick restart of supervisord and you should be golden.<code>sudo service supervisor restart</code>
+
+==== Save My Display ====
+The new RaspberryPi display is really nice, and I'd like to keep it working as long as possible. So, because this weather display lives on my desk, and is always on I've decided to turn off the display when I'm not using it, and subsequently back on when I am. 
+
+To do this, I've setup 2 really simple cron jobs. One to turn the backlit off when I'm not in the room, and another to turn it back on, when I am. Since the display lives in my office, and I'm typically in my office as early as 7am, or as late as 1am I've decided to go with those hours. So here's the relevent lines out of my root's crontab:<code:bash linenums:1>
+# Turn backlite off to preserve screen
+0 1 * * * echo 1 > /sys/class/backlight/rpi_backlight/bl_power
+
+# Turn backlite on during the day
+0 7 * * * echo 0 > /sys/class/backlight/rpi_backlight/bl_power</code>
+
+Now, the display turns off, and on, like clockwork (duh)!
+
+
+
+
+----
+====== Comments ======
+~~DISQUS~~
