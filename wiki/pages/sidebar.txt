@@ -1,14 +1,14 @@
 
 **  Projects**
-      * [[recalbox|RecalBox]]
-      * [[rpi-weather-display|Weather Display]]
-      * [[RAV4 Headunit|RAV4 Headunit]]
+      * [[projects:recalbox|RecalBox]]
+      * [[projects:rpi-weather-display|Weather Display]]
+      * [[projects:rav4_headunit|RAV4 Headunit]]
 **  Home Automation**
-      * [[OpenHAB|OpenHAB]]
-      * [[home-assistant|Home-Assistant]]
-      * [[wink-hacking|Wink Hacking]]
-      * [[lifx-hacking|Lifx]]
-      * [[dht22-sensor|Temp/Humidity]]
+      * [[home_automation:openhab|OpenHAB]]
+      * [[home_automation:home-assistant|Home-Assistant]]
+      * [[home_automation:wink-hacking|Wink Hacking]]
+      * [[home_automation:lifx-hacking|Lifx]]
+      * [[home_automation:dht22-sensor|Temp/Humidity]]
 **  Outdoor Adventures**
       * [[Hiking|Hiking]]
       * [[Backpacking|Backpacking]]
