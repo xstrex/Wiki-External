@@ -13,7 +13,7 @@ There are currently 3 options available:
   * 2GB RAM 32GB ROM
   * 1GB RAM 16GB ROM
 ===== Pictures =====
-{{:img_0158.jpg?400|}}
+{{wiki:img_0158.jpg?400|}}
 ===== Installation Instructions =====
 ==== Without JBL ====
 The Manufacturer and other users on the forum report that this headunit is simply plug & play. I would appreciate some additional steps & pictures to expand this section. 
