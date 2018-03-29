@@ -11,7 +11,7 @@
       * [[home_automation:dht22-sensor|Temp/Humidity]]
 **  Outdoor Adventures**
       * [[outdoor_adventures:hiking|Hiking]]
-      * [[Backpacking|Backpacking]]
+      * [[outdoor_adventures:backpacking|Backpacking]]
       * [[outdoor_adventures:recipes|Recipes]]
 **  Reference**
       * [[reference:server-setup|New Server Setup]]
