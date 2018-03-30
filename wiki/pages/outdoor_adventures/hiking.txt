@@ -12,7 +12,6 @@ I use [[http://lighterpack.com|Lighterpack.com]] to keep track of all my gear an
 === Evergreen Hiking ===
 17:35:28 2017-12-31
 <olmap id="olMap" width="700px" height="400px" lat="39.62293577380478382110595703125" lon="-105.34658954478800296783447265625" zoom="18" statusbar="1" toolbar="0" controls="0" poihoverstyle="1" baselyr="terrain" gpxfile="outdoor_adventures:12312017.gpx" summary="Evergreen Hiking">
-</olmap>
 {{ :outdoor_adventures:12312017.gpx |}}
 
 
