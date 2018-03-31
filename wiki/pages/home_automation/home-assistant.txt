@@ -3,7 +3,7 @@ Home Assistant is an open-source home automation platform running on Python 3. T
 
 It has a very extensive, and constantly growing set of supported [[https://home-assistant.io/components/|components]]. It's well documented, and fairly easy to [[https://home-assistant.io/getting-started/|setup]]. 
 
-To take a look at my complete setup, checkout my Home Assistant github [[https://github.com/xstrex/HAConfig|repo]].
+To take a look at my complete setup, checkout my Home Assistant github [[https://github.com/xstrex/HAConfig-v2|repo]].
 ===== Customizations =====
 Below are a few of the customizations I've made to my Home Assistant install. 
 
