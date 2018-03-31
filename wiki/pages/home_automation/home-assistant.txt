@@ -4,9 +4,24 @@ Home Assistant is an open-source home automation platform running on Python 3. T
 It has a very extensive, and constantly growing set of supported [[https://home-assistant.io/components/|components]]. It's well documented, and fairly easy to [[https://home-assistant.io/getting-started/|setup]]. 
 
 To take a look at my complete setup, checkout my Home Assistant github [[https://github.com/xstrex/HAConfig-v2|repo]].
+
+----
+
 ===== Customizations =====
 Below are a few of the customizations I've made to my Home Assistant install. 
 
+----
+
+===== Fully TTS Script =====
+Recently I developed a script to send messages from HA to the Fully app, to be played as TTS. This way you can make the tablets around your house, talk. Which is quite fun. Like having your house tell you when the dishes are done, or any important reminders you may have forgotten about. 
+
+The script is fairly simple, and runs on the command line, with the following syntax: 
+<code:bash>
+./fully_tts.sh -h [hostname/IP] -p [password for fully] -m "message you'd like spoken"
+</code>
+
+It can be found on my GitHub page:
+{{gh>https://github.com/xstrex/BashSnips/blob/master/fully_tts.sh}}
 
 ----
 
