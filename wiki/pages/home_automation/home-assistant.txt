@@ -12,7 +12,7 @@ Below are a few of the customizations I've made to my Home Assistant install.
 
 ----
 
-===== Fully TTS Script =====
+==== Fully TTS Script ====
 Recently I developed a script to send messages from HA to the [[https://www.ozerov.de/fully-kiosk-browser/|Fully]] app, to be played as TTS. This way you can make the tablets around your house, talk. Which is quite fun. Like having your house tell you when the dishes are done, or any important reminders you may have forgotten about. 
 
 The script is fairly simple, and runs on the command line, with the following syntax: 
@@ -63,5 +63,5 @@ All done, now you can watch your new log file for updates with: <code:bash linen
 
 
 ----
-====== Comments ======
+===== Comments =====
 ~~DISQUS~~
