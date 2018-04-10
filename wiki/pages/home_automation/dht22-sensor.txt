@@ -170,6 +170,10 @@ void loop() {
 }
 </code>
 
+===== Pictures =====
+{{:home_automation:temp-humid-dht223.jpg?400 |}}
+{{:home_automation:temp-humid-dht221.jpg?400 |}}
+{{:home_automation:temp-humid-dht222.jpg?400 |}}
 
 
 
