@@ -11,6 +11,8 @@ __I understand this is not a complete tutorial, I'll get it updated shortly, and
   * Screws for Case: https://www.microfasteners.com/home.php?cat=745
   * Various wires, solder, and hand tools
 
+===== Wiring =====
+I'll get a wiring diagram put together shortly, but the only special piece is the addition of a 4.7K - 10K ohm resistor between the data pin & VCC on the DHT22 (Depending on where you get your DHT22, it may come with one).
 
 ===== Software =====
 Basically what's happening here is, I'm connecting to my home wifi, reading the temperature & humidity from the DHT22, computing the heatindex (from the temperature & humidity), then publishing the values to a MQTT broker on my local network. 
