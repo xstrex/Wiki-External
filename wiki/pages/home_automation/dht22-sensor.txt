@@ -171,15 +171,13 @@ void loop() {
 </code>
 
 ===== Pictures =====
-{{:home_automation:temp-humid-dht222.jpg?200 |}}
-{{:home_automation:temp-humid-dht223.jpg?200|}}
-{{:home_automation:temp-humid-dht221.jpg?200 |}}
+{{:home_automation:temp-humid-dht223.jpg?200|Testing Connections}}
+{{:home_automation:temp-humid-dht221.jpg?200|Don't mind the hot-glue}}
+{{:home_automation:temp-humid-dht222.jpg?200|Finished Product}}
 
-
-
-
-
-
+  - Testing the connections, and programming the board (with an FTDI adapter)
+  - Prototype
+  - Final design (posted above) for the case
 
 ----
 ====== Comments ======
