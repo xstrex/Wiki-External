@@ -171,9 +171,12 @@ void loop() {
 </code>
 
 ===== Pictures =====
-{{:home_automation:temp-humid-dht223.jpg?200 |}}
+{{:home_automation:temp-humid-dht223.jpg?200 | Testing everything before it was installed }}
 {{:home_automation:temp-humid-dht221.jpg?200 |}}
 {{:home_automation:temp-humid-dht222.jpg?200 |}}
+
+
+
 
 
 
