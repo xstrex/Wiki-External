@@ -1,7 +1,7 @@
 ====== Wireless Temperature/Humidity Sensor ======
 A while back I designed and built a few wireless sensor nodes, to read the temperature and humidity, and publish the values to an MQTT broker, for use in home automation scenarios. Here's how I did it. 
 
-__I understand this is not a complete tutorial, I'll get it updated shortly, and add some pictures..__  
+__I understand this is not a complete tutorial, I'll get it updated shortly..__  
 
 ===== Hardware =====
   * ESP8266 Breakout: https://www.adafruit.com/products/2471
